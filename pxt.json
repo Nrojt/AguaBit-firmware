@@ -6,7 +6,8 @@
         "radio": "*",
         "microphone": "*",
         "Grove": "github:seeed-studio/pxt-grove#v0.5.0",
-        "microbit-dstemp": "github:bsiever/microbit-dstemp#v0.1.26"
+        "microbit-dstemp": "github:bsiever/microbit-dstemp#v0.1.26",
+        "datalogger": "*"
     },
     "files": [
         "main.blocks",
