@@ -8,4 +8,6 @@ datalogger.set_column_titles("Slot1", "Slot2", "Slot3")
 
 def on_forever():
     basic.show_number(ph_value)
+    serial.write_number(25)
+    basic.pause(5000)
 basic.forever(on_forever)

@@ -9,4 +9,6 @@ datalogger.setColumnTitles(
 )
 basic.forever(function () {
     basic.showNumber(ph_value)
+    serial.writeNumber(25)
+    basic.pause(5000)
 })
