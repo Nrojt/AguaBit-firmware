@@ -1,51 +1,53 @@
 state = 0
-textInput = "B"
-slot1 = "AB"
-slot2 = "AB"
-slot3 = "AB"
+textInput = ""
+slot1 = ""
+slot2 = ""
+slot3 = ""
 ph_value = 69.69
-temp_value = 45.45
+temp_value = 42.34
 
 def on_forever():
-    global textInput, state
+    global textInput, state, slot1, slot2, slot3, ph_value, temp_value
     while state == 0:
         basic.show_icon(IconNames.STICK_FIGURE)
         textInput = serial.read_string()
-        if textInput.index_of("X") >= 0:
-            state = 2
-            break
-        elif textInput.index_of("Y") >= 0:
+        if textInput.char_at(0) == 'C':
             state = 1
+            break
+        elif textInput.char_at(0) == 'M':
+            state = 2
             break
     while state == 1:
         basic.show_icon(IconNames.SMALL_HEART)
-        slot12 = "" + textInput.char_at(1) + textInput.char_at(2)
-        slot22 = "" + textInput.char_at(3) + textInput.char_at(4)
-        slot32 = "" + textInput.char_at(5) + textInput.char_at(6)
-        if slot12.char_at(0) == "E" or slot12.char_at(0) == "P" or slot12.char_at(0) == "T":
-            basic.show_string(slot12)
+        slot1 = "" + textInput.char_at(1) + textInput.char_at(2)
+        slot2 = "" + textInput.char_at(3) + textInput.char_at(4)
+        slot3 = "" + textInput.char_at(5) + textInput.char_at(6)
+        if slot1.char_at(0) == "E" or slot1.char_at(0) == "P" or slot1.char_at(0) == "T":
+            basic.show_string(slot1)
             pause(200)
-            textInput = "B"
+            textInput = ""
             state = 0
             break
     while state == 2:
         basic.show_icon(IconNames.HOUSE)
-        if slot12 == "EM":
-            serial.write_line("" + str(0))
-        elif slot12 == "PH":
+        if slot1 == "EM":
+            serial.write_line("EMPTY")
+        elif slot1 == "PH":
             serial.write_line("" + str(ph_value))
-        elif slot12 == "TP":
+        elif slot1 == "TP":
             serial.write_line("" + str(temp_value))
-        if slot22 == "EM":
-            serial.write_line("" + str(0))
-        elif slot22 == "PH":
+        if slot2 == "EM":
+            serial.write_line("EMPTY")
+        elif slot2 == "PH":
             serial.write_line("" + str(ph_value))
-        elif slot22 == "TP":
+        elif slot2 == "TP":
             serial.write_line("" + str(temp_value))
-        if slot32 == "EM":
-            serial.write_line("" + str(0))
-        elif slot32 == "PH":
+        if slot3 == "EM":
+            serial.write_line("EMPTY")
+        elif slot3 == "PH":
             serial.write_line("" + str(ph_value))
-        elif slot32 == "TP":
+        elif slot3 == "TP":
             serial.write_line("" + str(temp_value))
+        pause(200)
+        state = 0
 basic.forever(on_forever)
