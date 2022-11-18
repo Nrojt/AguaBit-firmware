@@ -23,7 +23,6 @@ def on_forever():
         slot2 = "" + textInput.char_at(3) + textInput.char_at(4)
         slot3 = "" + textInput.char_at(5) + textInput.char_at(6)
         if slot1.char_at(0) == "E" or slot1.char_at(0) == "P" or slot1.char_at(0) == "T":
-            basic.show_string(slot1)
             pause(200)
             textInput = ""
             state = 0
@@ -31,23 +30,27 @@ def on_forever():
     while state == 2:
         basic.show_icon(IconNames.HOUSE)
         if slot1 == "EM":
-            serial.write_line("EMPTY")
+            serial.write_string("EMPTY")
         elif slot1 == "PH":
-            serial.write_line("" + str(ph_value))
+            serial.write_string(str(ph_value))
         elif slot1 == "TP":
-            serial.write_line("" + str(temp_value))
+            serial.write_string(str(temp_value))
+
         if slot2 == "EM":
-            serial.write_line("EMPTY")
+            serial.write_string("EMPTY")
         elif slot2 == "PH":
-            serial.write_line("" + str(ph_value))
+            serial.write_string(str(ph_value))
         elif slot2 == "TP":
-            serial.write_line("" + str(temp_value))
+            serial.write_string(str(temp_value))
+
         if slot3 == "EM":
-            serial.write_line("EMPTY")
+            serial.write_string("EMPTY")
         elif slot3 == "PH":
-            serial.write_line("" + str(ph_value))
+            serial.write_string(str(ph_value))
         elif slot3 == "TP":
-            serial.write_line("" + str(temp_value))
+            serial.write_string(str(temp_value))
+
         pause(200)
         state = 0
+        
 basic.forever(on_forever)

@@ -25,7 +25,6 @@ basic.forever(function on_forever() {
         slot2 = "" + textInput.charAt(3) + textInput.charAt(4)
         slot3 = "" + textInput.charAt(5) + textInput.charAt(6)
         if (slot1.charAt(0) == "E" || slot1.charAt(0) == "P" || slot1.charAt(0) == "T") {
-            basic.showString(slot1)
             pause(200)
             textInput = ""
             state = 0
@@ -36,27 +35,27 @@ basic.forever(function on_forever() {
     while (state == 2) {
         basic.showIcon(IconNames.House)
         if (slot1 == "EM") {
-            serial.writeLine("EMPTY")
+            serial.writeString("EMPTY")
         } else if (slot1 == "PH") {
-            serial.writeLine("" + ("" + ph_value))
+            serial.writeString("" + ph_value)
         } else if (slot1 == "TP") {
-            serial.writeLine("" + ("" + temp_value))
+            serial.writeString("" + temp_value)
         }
         
         if (slot2 == "EM") {
-            serial.writeLine("EMPTY")
+            serial.writeString("EMPTY")
         } else if (slot2 == "PH") {
-            serial.writeLine("" + ("" + ph_value))
+            serial.writeString("" + ph_value)
         } else if (slot2 == "TP") {
-            serial.writeLine("" + ("" + temp_value))
+            serial.writeString("" + temp_value)
         }
         
         if (slot3 == "EM") {
-            serial.writeLine("EMPTY")
+            serial.writeString("EMPTY")
         } else if (slot3 == "PH") {
-            serial.writeLine("" + ("" + ph_value))
+            serial.writeString("" + ph_value)
         } else if (slot3 == "TP") {
-            serial.writeLine("" + ("" + temp_value))
+            serial.writeString("" + temp_value)
         }
         
         pause(200)
