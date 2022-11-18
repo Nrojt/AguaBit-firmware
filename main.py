@@ -28,7 +28,6 @@ def on_forever():
             state = 0
             break
     while state == 2:
-        basic.show_icon(IconNames.HOUSE)
         if slot1 == "EM":
             serial.write_string("EMPTY")
         elif slot1 == "PH":

@@ -33,7 +33,6 @@ basic.forever(function on_forever() {
         
     }
     while (state == 2) {
-        basic.showIcon(IconNames.House)
         if (slot1 == "EM") {
             serial.writeString("EMPTY")
         } else if (slot1 == "PH") {
