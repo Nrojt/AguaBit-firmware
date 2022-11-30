@@ -60,6 +60,10 @@ basic.forever(function on_forever() {
             serial.writeString("0" + slot2phstring.charAt(0) + "." + slot2phstring.charAt(1) + slot2phstring.charAt(2))
         } else if (slot2 == "TP") {
             slot2tmpstring = "" + dstemp.celsius(DigitalPin.P1)
+            if (slot2tmpstring.charAt(4).isEmpty()) {
+                slot2tmpstring += "0"
+            }
+            
             serial.writeString(slot2tmpstring.charAt(0) + slot2tmpstring.charAt(1) + slot2tmpstring.charAt(2) + slot2tmpstring.charAt(3) + slot2tmpstring.charAt(4))
         }
         
@@ -70,6 +74,10 @@ basic.forever(function on_forever() {
             serial.writeString("0" + slot3phstring.charAt(0) + "." + slot3phstring.charAt(1) + slot3phstring.charAt(2))
         } else if (slot3 == "TP") {
             slot3tmpstring = "" + dstemp.celsius(DigitalPin.P2)
+            if (slot3tmpstring.charAt(4).isEmpty()) {
+                slot3tmpstring += "0"
+            }
+            
             serial.writeString(slot3tmpstring.charAt(0) + slot3tmpstring.charAt(1) + slot3tmpstring.charAt(2) + slot3tmpstring.charAt(3) + slot3tmpstring.charAt(4))
         }
         

@@ -45,6 +45,8 @@ def on_forever():
             serial.write_string("0" + slot2phstring.char_at(0) + "." + slot2phstring.char_at(1) + slot2phstring.char_at(2))
         elif slot2 == "TP":
             slot2tmpstring = str(dstemp.celsius(DigitalPin.P1))
+            if(slot2tmpstring.char_at(4).is_empty()):
+                            slot2tmpstring+= "0"
             serial.write_string(slot2tmpstring.char_at(0)+slot2tmpstring.char_at(1)+slot2tmpstring.char_at(2)+slot2tmpstring.char_at(3)+slot2tmpstring.char_at(4))
         if slot3 == "EM":
             serial.write_string("EMPTY")
@@ -53,6 +55,8 @@ def on_forever():
             serial.write_string("0" + slot3phstring.char_at(0) + "." + slot3phstring.char_at(1) + slot3phstring.char_at(2))
         elif slot3 == "TP":
             slot3tmpstring = str(dstemp.celsius(DigitalPin.P2))
+            if(slot3tmpstring.char_at(4).is_empty()):
+                slot3tmpstring+= "0"
             serial.write_string(slot3tmpstring.char_at(0)+slot3tmpstring.char_at(1)+slot3tmpstring.char_at(2)+slot3tmpstring.char_at(3)+slot3tmpstring.char_at(4))
         pause(200)
         state = 0
