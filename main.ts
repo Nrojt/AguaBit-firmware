@@ -46,6 +46,10 @@ basic.forever(function on_forever() {
             serial.writeString("0" + slot1phstring.charAt(0) + "." + slot1phstring.charAt(1) + slot1phstring.charAt(2))
         } else if (slot1 == "TP") {
             slot1tmpstring = "" + dstemp.celsius(DigitalPin.P0)
+            if (slot1tmpstring.charAt(4).isEmpty()) {
+                slot1tmpstring += "0"
+            }
+            
             serial.writeString(slot1tmpstring.charAt(0) + slot1tmpstring.charAt(1) + slot1tmpstring.charAt(2) + slot1tmpstring.charAt(3) + slot1tmpstring.charAt(4))
         }
         
