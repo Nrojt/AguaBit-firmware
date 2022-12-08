@@ -40,9 +40,7 @@ basic.forever(function on_forever() {
     }
     while (state == 2) {
         basic.showIcon(IconNames.Heart)
-        if (slot1 == "EM") {
-            serial.writeString("Empty")
-        } else if (slot1 == "PH") {
+        if (slot1 == "PH") {
             slot1phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P0)))
             serial.writeString("0" + slot1phstring.charAt(0) + slot1phstring.charAt(1) + "." + slot1phstring.charAt(2) + slot1phstring.charAt(3))
         } else if (slot1 == "TP") {
@@ -50,9 +48,7 @@ basic.forever(function on_forever() {
             serial.writeString("" + slot1tmpstring.charAt(0) + slot1tmpstring.charAt(1) + slot1tmpstring.charAt(2) + slot1tmpstring.charAt(3) + slot1tmpstring.charAt(4))
         }
         
-        if (slot2 == "EM") {
-            serial.writeString("Empty")
-        } else if (slot2 == "PH") {
+        if (slot2 == "PH") {
             slot2phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P1)))
             serial.writeString("0" + slot2phstring.charAt(0) + "." + slot2phstring.charAt(1) + slot2phstring.charAt(2))
         } else if (slot2 == "TP") {
@@ -60,9 +56,7 @@ basic.forever(function on_forever() {
             serial.writeString("" + slot2tmpstring.charAt(0) + slot2tmpstring.charAt(1) + slot2tmpstring.charAt(2) + slot2tmpstring.charAt(3) + slot2tmpstring.charAt(4))
         }
         
-        if (slot3 == "EM") {
-            serial.writeString("Empty")
-        } else if (slot3 == "PH") {
+        if (slot3 == "PH") {
             slot3phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P2)))
             serial.writeString("0" + slot3phstring.charAt(0) + "." + slot3phstring.charAt(1) + slot3phstring.charAt(3))
         } else if (slot3 == "TP") {
