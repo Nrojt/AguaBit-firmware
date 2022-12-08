@@ -1,10 +1,10 @@
-slot3 = ""
-slot2 = ""
-slot1 = ""
+slot3 = "EM"
+slot2 = "EM"
+slot1 = "EM"
 textInput = ""
 state = 0
-ph_value = 69.69
-temp_value = 42.34
+ph_value = 11.11
+temp_value = 22.22
 
 def on_forever():
     global textInput, state, slot1, slot2, slot3
@@ -28,36 +28,31 @@ def on_forever():
             state = 0
             break
     while state == 2:
+        basic.show_icon(IconNames.HEART)
         if slot1 == "EM":
-            serial.write_string("EMPTY")
+            serial.write_string("Empty")
         elif slot1 == "PH":
-            slot1phstring = str(pins.analog_read_pin(AnalogPin.P0))
-            serial.write_string("0" + slot1phstring.char_at(0) + "." + slot1phstring.char_at(1) + slot1phstring.char_at(2))
+            slot1phstring = str("" + str(pins.analog_read_pin(AnalogPin.P0)))
+            serial.write_string("0" + slot1phstring.char_at(0) + slot1phstring.char_at(1) + "." + slot1phstring.char_at(2) + slot1phstring.char_at(3))
         elif slot1 == "TP":
-            slot1tmpstring = str(dstemp.celsius(DigitalPin.P0))
-            if(slot1tmpstring.char_at(4).is_empty()):
-                slot1tmpstring+= "0"
-            serial.write_string(slot1tmpstring.char_at(0)+slot1tmpstring.char_at(1)+slot1tmpstring.char_at(2)+slot1tmpstring.char_at(3)+slot1tmpstring.char_at(4))
+            slot1tmpstring = str("" + str(dstemp.celsius(DigitalPin.P0)) + "0")
+            serial.write_string("" + slot1tmpstring.char_at(0) + slot1tmpstring.char_at(1) + slot1tmpstring.char_at(2) + slot1tmpstring.char_at(3) + slot1tmpstring.char_at(4))
         if slot2 == "EM":
-            serial.write_string("EMPTY")
+            serial.write_string("Empty")
         elif slot2 == "PH":
-            slot2phstring = str(pins.analog_read_pin(AnalogPin.P1))
+            slot2phstring = str("" + str(pins.analog_read_pin(AnalogPin.P1)))
             serial.write_string("0" + slot2phstring.char_at(0) + "." + slot2phstring.char_at(1) + slot2phstring.char_at(2))
         elif slot2 == "TP":
-            slot2tmpstring = str(dstemp.celsius(DigitalPin.P1))
-            if(slot2tmpstring.char_at(4).is_empty()):
-                            slot2tmpstring+= "0"
-            serial.write_string(slot2tmpstring.char_at(0)+slot2tmpstring.char_at(1)+slot2tmpstring.char_at(2)+slot2tmpstring.char_at(3)+slot2tmpstring.char_at(4))
+            slot2tmpstring = str("" + str(dstemp.celsius(DigitalPin.P1)) + "0")
+            serial.write_string("" + slot2tmpstring.char_at(0) + slot2tmpstring.char_at(1) + slot2tmpstring.char_at(2) + slot2tmpstring.char_at(3) + slot2tmpstring.char_at(4))
         if slot3 == "EM":
-            serial.write_string("EMPTY")
+            serial.write_string("Empty")
         elif slot3 == "PH":
-            slot3phstring =str(pins.analog_read_pin(AnalogPin.P2))
-            serial.write_string("0" + slot3phstring.char_at(0) + "." + slot3phstring.char_at(1) + slot3phstring.char_at(2))
+            slot3phstring = str("" + str(pins.analog_read_pin(AnalogPin.P2)))
+            serial.write_string("0" + slot3phstring.char_at(0) + "." + slot3phstring.char_at(1) + slot3phstring.char_at(3))
         elif slot3 == "TP":
-            slot3tmpstring = str(dstemp.celsius(DigitalPin.P2))
-            if(slot3tmpstring.char_at(4).is_empty()):
-                slot3tmpstring+= "0"
-            serial.write_string(slot3tmpstring.char_at(0)+slot3tmpstring.char_at(1)+slot3tmpstring.char_at(2)+slot3tmpstring.char_at(3)+slot3tmpstring.char_at(4))
+            slot3tmpstring = str("" + str(dstemp.celsius(DigitalPin.P2)) + "0")
+            serial.write_string("" + slot3tmpstring.char_at(0) + slot3tmpstring.char_at(1) + slot3tmpstring.char_at(2) + slot3tmpstring.char_at(3) + slot3tmpstring.char_at(4))
         pause(200)
         state = 0
 basic.forever(on_forever)
