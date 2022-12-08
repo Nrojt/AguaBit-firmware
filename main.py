@@ -34,14 +34,14 @@ def on_forever():
             serial.write_string("0" + slot1phstring.char_at(0) + slot1phstring.char_at(1) + "." + slot1phstring.char_at(2) + slot1phstring.char_at(3))
         elif slot1 == "TP":
             slot1tmpstring = str("" + str(dstemp.celsius(DigitalPin.P0)) + "0")
-            serial.write_number(dstemp.celsius(DigitalPin.P2))
+            serial.write_number(dstemp.celsius(DigitalPin.P0))
             #serial.write_string("" + slot1tmpstring.char_at(0) + slot1tmpstring.char_at(1) + slot1tmpstring.char_at(2) + slot1tmpstring.char_at(3) + slot1tmpstring.char_at(4))
         if slot2 == "PH":
             slot2phstring = str("" + str(pins.analog_read_pin(AnalogPin.P1)))
             serial.write_string("0" + slot2phstring.char_at(0) + "." + slot2phstring.char_at(1) + slot2phstring.char_at(2))
         elif slot2 == "TP":
             slot2tmpstring = str("" + str(dstemp.celsius(DigitalPin.P1)) + "0")
-            serial.write_number(dstemp.celsius(DigitalPin.P2))
+            serial.write_number(dstemp.celsius(DigitalPin.P1))
             #serial.write_string("" + slot2tmpstring.char_at(0) + slot2tmpstring.char_at(1) + slot2tmpstring.char_at(2) + slot2tmpstring.char_at(3) + slot2tmpstring.char_at(4))
         if slot3 == "PH":
             slot3phstring = str("" + str(pins.analog_read_pin(AnalogPin.P2)))
