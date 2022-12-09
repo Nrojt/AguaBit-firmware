@@ -43,30 +43,38 @@ basic.forever(function on_forever() {
         if (slot1 == "PH") {
             slot1phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P0)))
             serial.writeString("0" + slot1phstring.charAt(0) + slot1phstring.charAt(1) + "." + slot1phstring.charAt(2) + slot1phstring.charAt(3))
+            serial.writeString("|")
         } else if (slot1 == "TP") {
             slot1tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P0)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P0))
+            serial.writeString("|")
+        } else {
+            serial.writeString("Empty|")
         }
         
-        // serial.write_string("" + slot1tmpstring.char_at(0) + slot1tmpstring.char_at(1) + slot1tmpstring.char_at(2) + slot1tmpstring.char_at(3) + slot1tmpstring.char_at(4))
         if (slot2 == "PH") {
-            slot2phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P1)))
-            serial.writeString("0" + slot2phstring.charAt(0) + "." + slot2phstring.charAt(1) + slot2phstring.charAt(2))
+            slot2phstring = "" + pins.analogReadPin(AnalogPin.P1)
+            serial.writeString(slot2phstring)
+            serial.writeString("|")
         } else if (slot2 == "TP") {
             slot2tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P1)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P1))
+            serial.writeString("|")
+        } else {
+            serial.writeString("Empty|")
         }
         
-        // serial.write_string("" + slot2tmpstring.char_at(0) + slot2tmpstring.char_at(1) + slot2tmpstring.char_at(2) + slot2tmpstring.char_at(3) + slot2tmpstring.char_at(4))
         if (slot3 == "PH") {
             slot3phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P2)))
             serial.writeString("0" + slot3phstring.charAt(0) + "." + slot3phstring.charAt(1) + slot3phstring.charAt(3))
         } else if (slot3 == "TP") {
             slot3tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P2)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P2))
+        } else {
+            serial.writeString("Empty")
         }
         
-        // serial.write_string("" + slot3tmpstring.char_at(0) + slot3tmpstring.char_at(1) + slot3tmpstring.char_at(2) + slot3tmpstring.char_at(3) + slot3tmpstring.char_at(4))
+        serial.writeString("!")
         pause(200)
         state = 0
     }
