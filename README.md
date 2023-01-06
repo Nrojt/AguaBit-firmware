@@ -17,7 +17,7 @@ Made by klas 9 groep 5 2022-2023 at The Hague University Of applied Science as p
 * [PH-sensor](https://elektronicavoorjou.nl/en/product/ph-sensor-kit-v2/)
 * [Temperature sensor](https://www.kiwi-electronics.com/nl/1-wire-temperatuur-sensor-grove-compatibel-3716)
 
-The PH-sensor needs to be calibrated with an Arduino Uno, see: https://wiki.dfrobot.com/Gravity__Analog_pH_Sensor_Meter_Kit_V2_SKU_SEN0161-V2
+The PH-sensor needs to be calibrated with an Arduino Uno, see: [https://wiki.dfrobot.com/Gravity__Analog_pH_Sensor_Meter_Kit_V2_SKU_SEN0161-V2](https://wiki.dfrobot.com/Gravity__Analog_pH_Sensor_Meter_Kit_V2_SKU_SEN0161-V2)
 
 
 ## Use as Extension
