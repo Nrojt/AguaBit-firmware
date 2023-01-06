@@ -1,8 +1,8 @@
 
 > Open this page at [https://nrojt.github.io/sensor-test/](https://nrojt.github.io/sensor-test/)
 
+# Agua:bit firmware
 ## About project
-Agua:bit firmware
 
 For use with: https://github.com/Nrojt/Agua-bit-companion-app
  
