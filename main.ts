@@ -1,17 +1,11 @@
+let textInput = ""
+let state = 0
 let slot3 = "EM"
 let slot2 = "EM"
 let slot1 = "EM"
-let textInput = ""
-let state = 0
 let ph_value = 11.11
 let temp_value = 22.22
 basic.forever(function on_forever() {
-    let slot1phstring: string;
-    let slot1tmpstring: string;
-    let slot2phstring: string;
-    let slot2tmpstring: string;
-    let slot3phstring: string;
-    let slot3tmpstring: string;
     
     while (state == 0) {
         basic.showIcon(IconNames.StickFigure)
@@ -41,11 +35,9 @@ basic.forever(function on_forever() {
     while (state == 2) {
         basic.showIcon(IconNames.Heart)
         if (slot1 == "PH") {
-            slot1phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P0)))
-            serial.writeString("0" + slot1phstring.charAt(0) + slot1phstring.charAt(1) + "." + slot1phstring.charAt(2) + slot1phstring.charAt(3))
+            serial.writeNumber(pins.analogReadPin(AnalogPin.P0))
             serial.writeString("|")
         } else if (slot1 == "TP") {
-            slot1tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P0)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P0))
             serial.writeString("|")
         } else {
@@ -53,11 +45,9 @@ basic.forever(function on_forever() {
         }
         
         if (slot2 == "PH") {
-            slot2phstring = "" + pins.analogReadPin(AnalogPin.P1)
-            serial.writeString(slot2phstring)
+            serial.writeNumber(pins.analogReadPin(AnalogPin.P1))
             serial.writeString("|")
         } else if (slot2 == "TP") {
-            slot2tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P1)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P1))
             serial.writeString("|")
         } else {
@@ -65,10 +55,8 @@ basic.forever(function on_forever() {
         }
         
         if (slot3 == "PH") {
-            slot3phstring = "" + ("" + ("" + pins.analogReadPin(AnalogPin.P2)))
-            serial.writeString("0" + slot3phstring.charAt(0) + "." + slot3phstring.charAt(1) + slot3phstring.charAt(3))
+            serial.writeNumber(pins.analogReadPin(AnalogPin.P2))
         } else if (slot3 == "TP") {
-            slot3tmpstring = "" + ("" + ("" + dstemp.celsius(DigitalPin.P2)) + "0")
             serial.writeNumber(dstemp.celsius(DigitalPin.P2))
         } else {
             serial.writeString("Empty")

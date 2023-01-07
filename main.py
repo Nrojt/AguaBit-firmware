@@ -1,8 +1,8 @@
+textInput = ""
+state = 0
 slot3 = "EM"
 slot2 = "EM"
 slot1 = "EM"
-textInput = ""
-state = 0
 ph_value = 11.11
 temp_value = 22.22
 
@@ -30,34 +30,28 @@ def on_forever():
     while state == 2:
         basic.show_icon(IconNames.HEART)
         if slot1 == "PH":
-            slot1phstring = str("" + str(pins.analog_read_pin(AnalogPin.P0)))
-            serial.write_string("0" + slot1phstring.char_at(0) + slot1phstring.char_at(1) + "." + slot1phstring.char_at(2) + slot1phstring.char_at(3))
-            serial.write_string("|");
+            serial.write_number(pins.analog_read_pin(AnalogPin.P0))
+            serial.write_string("|")
         elif slot1 == "TP":
-            slot1tmpstring = str("" + str(dstemp.celsius(DigitalPin.P0)) + "0")
             serial.write_number(dstemp.celsius(DigitalPin.P0))
-            serial.write_string("|");
+            serial.write_string("|")
         else:
-            serial.write_string("Empty|");
+            serial.write_string("Empty|")
         if slot2 == "PH":
-            slot2phstring = str(pins.analog_read_pin(AnalogPin.P1))
-            serial.write_string(slot2phstring)
-            serial.write_string("|");
+            serial.write_number(pins.analog_read_pin(AnalogPin.P1))
+            serial.write_string("|")
         elif slot2 == "TP":
-            slot2tmpstring = str("" + str(dstemp.celsius(DigitalPin.P1)) + "0")
             serial.write_number(dstemp.celsius(DigitalPin.P1))
-            serial.write_string("|");
+            serial.write_string("|")
         else:
-            serial.write_string("Empty|");    
+            serial.write_string("Empty|")
         if slot3 == "PH":
-            slot3phstring = str("" + str(pins.analog_read_pin(AnalogPin.P2)))
-            serial.write_string("0" + slot3phstring.char_at(0) + "." + slot3phstring.char_at(1) + slot3phstring.char_at(3))
+            serial.write_number(pins.analog_read_pin(AnalogPin.P2))
         elif slot3 == "TP":
-            slot3tmpstring = str("" + str(dstemp.celsius(DigitalPin.P2)) + "0")
             serial.write_number(dstemp.celsius(DigitalPin.P2))
         else:
-            serial.write_string("Empty");
-        serial.write_string("!");    
+            serial.write_string("Empty")
+        serial.write_string("!")
         pause(200)
         state = 0
 basic.forever(on_forever)
